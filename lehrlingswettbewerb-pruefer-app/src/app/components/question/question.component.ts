@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Question } from 'src/app/models/question';
 import { QuestionsService } from 'src/app/services/questions.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { QuestionsService } from 'src/app/services/questions.service';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor(private questionService: QuestionsService) { }
+  @Input() question: Question
+
+  constructor() { }
 
   ngOnInit(): void {
   }
