@@ -1,1 +1,5 @@
-<p>question works!</p>
+<div class="font-bold">{{ question.questionID }}: {{ question.question }}</div>
+
+<div class="cursor-pointer hover:text-fuchsia-600" *ngFor="let answer of question.answers" (click)="selectAnswer(answer)">
+  {{ answer }}
+</div>

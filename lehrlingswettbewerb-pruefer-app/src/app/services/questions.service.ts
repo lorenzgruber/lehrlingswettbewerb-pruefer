@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class QuestionsService {
-  
+
   questions: Question[];
   private jsonURL = 'assets/questions.json';
 
@@ -19,5 +19,9 @@ export class QuestionsService {
 
   private getJSON(): Observable<Question[]> {
     return this.http.get<Question[]>(this.jsonURL);
+  }
+
+  getRandomQuestion(): Question {
+    return this.questions[Math.floor(Math.random() * this.questions.length)]
   }
 }

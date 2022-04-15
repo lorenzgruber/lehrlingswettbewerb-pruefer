@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuestionsService } from './services/questions.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lehrlingswettbewerb-pruefer-app';
+
+  constructor(public questionService: QuestionsService) {}
 }
