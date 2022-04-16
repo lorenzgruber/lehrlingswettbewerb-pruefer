@@ -4,31 +4,31 @@
 </h2>
 
 <div
-  class="text-base w-4/5 m-auto p-2 border-primary-transparent hover:border-primary border mt-2 rounded-md transition-colors"
+  class="text-base w-4/5 m-auto p-3 border-primary-transparent hover:border-primary border mt-2 rounded-md transition-colors relative"
   *ngFor="let answer of question.answers; let i = index"
   [attr.data-index]="i"
   (click)="selectAnswer(i)"
   [ngClass]="
-    selectedAnswer !== undefined ? 'pointer-events-none' : 'cursor-pointer'
-  "
-  [ngClass]="
-    selectedAnswer == i
+    (selectedAnswer !== undefined ? 'pointer-events-none' : 'cursor-pointer') + ' ' +
+    (selectedAnswer == i
       ? selectedAnswer == question.correct
         ? 'correct'
         : 'wrong'
       : selectedAnswer !== undefined && i == question.correct
       ? 'correct'
-      : selectedAnswer === undefined ? '' : 'opacity-50'
+      : selectedAnswer === undefined ? '' : 'opacity-50')
   "
 >
   {{ answer }}
-  <span class="material-icons float-right text-correct" *ngIf="selectedAnswer == i && selectedAnswer == question.correct">check</span>
-  <span class="material-icons float-right text-wrong" *ngIf="selectedAnswer == i && selectedAnswer != question.correct">clear</span>
+  <span class="material-icons text-correct absolute -right-10" *ngIf="selectedAnswer == i && selectedAnswer == question.correct">check</span>
+  <span class="material-icons text-wrong absolute -right-10" *ngIf="selectedAnswer == i && selectedAnswer != question.correct">clear</span>
 </div>
 
 <div
   class="bg-primary py-2 px-4 mt-4 rounded-md w-fit m-auto text-center cursor-pointer font-bold animate-pop_up"
   *ngIf="selectedAnswer !== undefined"
+  (click)="nextQuestion()"
 >
-  nächste Frage
+  <span *ngIf="!lastQuestionInTest">nächste Frage</span>
+  <span *ngIf="lastQuestionInTest">Test beenden</span>
 </div>

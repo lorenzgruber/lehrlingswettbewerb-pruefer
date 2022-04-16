@@ -1,5 +1,5 @@
 :host {
-    @apply host;
+    @apply block tablet:w-4/5 laptop:w-4/6 desktop:w-1/2 m-auto mt-10;
 }
 
 span {

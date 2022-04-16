@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/models/question';
+import { QuestionAnswer } from 'src/app/models/questionAnswer';
 import { QuestionsService } from 'src/app/services/questions.service';
 
 @Component({
@@ -11,27 +12,35 @@ import { QuestionsService } from 'src/app/services/questions.service';
 export class TestComponent implements OnInit {
   questions: Question[];
   currentQuestion: Question;
-  correctQuestions: Question[];
-  wrongQuestions: Question[];
+  answeredQuestions: QuestionAnswer[] = [];
+  lastQuestion: boolean = false;
+  initialQuestionCount: number;
 
   constructor(
     private route: ActivatedRoute,
     private questionService: QuestionsService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     if (Object.keys(this.route.snapshot.params).length === 0) {
       this.questions = this.questionService
-        .getTestQuestions('A', 30)
-        .concat(this.questionService.getTestQuestions('B', 30))
-        .concat(this.questionService.getTestQuestions('C', 30))
-        .concat(this.questionService.getTestQuestions('D', 30));
+        .getTestQuestions('A', 10)
+        .concat(this.questionService.getTestQuestions('B', 10))
+        .concat(this.questionService.getTestQuestions('C', 10))
+        .concat(this.questionService.getTestQuestions('D', 10));
     } else {
       this.questions = this.questionService.getTestQuestions(
         this.route.snapshot.paramMap.get('subject'),
         parseInt(this.route.snapshot.paramMap.get('questionCount'))
       );
     }
+    this.initialQuestionCount = this.questions.length;
+    this.currentQuestion = this.questions.pop()[0];
+  }
+
+  getQuestoinAnswer(answer: QuestionAnswer): void {
+    this.answeredQuestions.push(answer);
+    this.currentQuestion = this.questions.pop()[0];
+    this.lastQuestion = this.questions.length === 0;
   }
 }

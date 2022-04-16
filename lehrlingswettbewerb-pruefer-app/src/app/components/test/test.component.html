@@ -1,1 +1,5 @@
-<p>test works!</p>
+
+<p class="text-center"
+>Frage {{initialQuestionCount - questions.length}} von {{initialQuestionCount}}</p>
+
+<app-question [question]="currentQuestion" [lastQuestionInTest]="this.questions.length === 0" (answerQuestionEvent)="getQuestoinAnswer($event)"></app-question>
