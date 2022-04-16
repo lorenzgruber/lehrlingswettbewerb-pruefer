@@ -13,8 +13,8 @@ export class TestComponent implements OnInit {
   questions: Question[];
   currentQuestion: Question;
   answeredQuestions: QuestionAnswer[] = [];
-  lastQuestion: boolean = false;
   initialQuestionCount: number;
+  testFinished: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class TestComponent implements OnInit {
 
     // very bad fix
     if (this.questionService.questions === undefined) {
-      this.router.navigate(['/']);
+      this.quitTest();
     }
 
     if (Object.keys(this.route.snapshot.params).length === 0) {
@@ -47,7 +47,14 @@ export class TestComponent implements OnInit {
 
   getQuestoinAnswer(answer: QuestionAnswer): void {
     this.answeredQuestions.push(answer);
-    this.currentQuestion = this.questions.pop()[0];
-    this.lastQuestion = this.questions.length === 0;
+    if (this.questions.length !== 0) {
+      this.currentQuestion = this.questions.pop()[0];
+    } else {
+      this.testFinished = true;
+    }
+  }
+
+  quitTest(): void {
+    this.router.navigate(['/']);
   }
 }

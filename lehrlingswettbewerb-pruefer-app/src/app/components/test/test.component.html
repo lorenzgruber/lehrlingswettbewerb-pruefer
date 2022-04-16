@@ -1,5 +1,16 @@
+<div *ngIf="!testFinished">
+    <p class="text-center"
+    >Frage {{initialQuestionCount - questions.length}} von {{initialQuestionCount}}</p>
+    <app-question [question]="currentQuestion" [lastQuestionInTest]="this.questions.length === 0" (answerQuestionEvent)="getQuestoinAnswer($event)"></app-question>    
+</div>
 
-<p class="text-center"
->Frage {{initialQuestionCount - questions.length}} von {{initialQuestionCount}}</p>
-
-<app-question [question]="currentQuestion" [lastQuestionInTest]="this.questions.length === 0" (answerQuestionEvent)="getQuestoinAnswer($event)"></app-question>
+<div *ngIf="testFinished">
+    <h2 class="text-2xl text-center font-bold p-2">Resultat</h2>
+    <div *ngFor="let answer of answeredQuestions" class="mt-4">
+        <div class="py-4">
+            <div class="w-9/12 border-t border-dashed border-primary m-auto"></div>
+        </div>
+        <app-question-answer [questionAnswer]="answer"></app-question-answer>
+    </div>
+    <div class="!my-10 button" (click)="quitTest()">zurück</div>
+</div>

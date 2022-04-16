@@ -23,6 +23,13 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.correct {
+  @apply border-correct text-correct;
+}
+
+.wrong {
+  @apply border-wrong text-wrong;
+}
 
 // Material Icons
 
