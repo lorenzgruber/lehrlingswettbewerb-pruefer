@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './components/question/question.component';
+import { QuestionAnswerComponent } from './components/question-answer/question-answer.component';
 import { TestSettingsComponent } from './components/test-settings/test-settings.component';
 import { TestComponent } from './components/test/test.component';
 
@@ -13,6 +14,7 @@ import { TestComponent } from './components/test/test.component';
   declarations: [
     AppComponent,
     QuestionComponent,
+    QuestionAnswerComponent,
     TestSettingsComponent,
     TestComponent
   ],
