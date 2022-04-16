@@ -9,5 +9,5 @@ import { QuestionsService } from './services/questions.service';
 export class AppComponent {
   title = 'lehrlingswettbewerb-pruefer-app';
 
-  constructor(public questionService: QuestionsService) {}
+  constructor(private questionService: QuestionsService) {}
 }

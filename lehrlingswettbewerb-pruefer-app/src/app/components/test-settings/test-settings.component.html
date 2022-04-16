@@ -1,1 +1,23 @@
-<p>test-settings works!</p>
+<h2 class="text-xl text-center font-bold p-2">Test Einstellungen</h2>
+
+<div class="m-auto w-fit">
+    <div>
+        <span class="text-lg font-bold mr-2">Bereich</span>
+        <select class="p-1 outline-none bg-bg border border-2 border-primary rounded-md">
+            <option selected disabled hidden>Bereich wählen</option>
+            <option (click)="setSubject('A')">A</option>
+            <option (click)="setSubject('B')">B</option>
+            <option (click)="setSubject('C')">C</option>
+            <option (click)="setSubject('D')">D</option>
+        </select>
+    </div>
+    <div>
+        <span class="text-lg font-bold mr-2">Fragen Anzahl</span>
+        <input class="appearance-none p-1 outline-none bg-bg border border-2 border-primary rounded-md" 
+        [disabled]="subject"
+        type="number"
+        value=1
+        min=1
+        max={{maxQuestionCount()}}>
+    </div>
+</div>

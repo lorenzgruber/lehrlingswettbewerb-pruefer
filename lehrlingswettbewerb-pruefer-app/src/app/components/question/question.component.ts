@@ -10,14 +10,17 @@ import { QuestionsService } from 'src/app/services/questions.service';
 export class QuestionComponent implements OnInit {
 
   @Input() question: Question
+  selectedAnswer: number
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  selectAnswer(answer: string): void {
-    console.log(answer);
+  selectAnswer(answer: number): void {
+    this.selectedAnswer = answer;
+    console.log(this.question.correct, this.selectedAnswer);
+    
   }
 
 }
