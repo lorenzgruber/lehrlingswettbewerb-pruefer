@@ -1,23 +1,29 @@
 <h2 class="text-xl text-center font-bold p-2">Test Einstellungen</h2>
-
-<div class="m-auto w-fit">
-    <div>
-        <span class="text-lg font-bold mr-2">Bereich</span>
-        <select class="p-1 outline-none bg-bg border border-2 border-primary rounded-md">
-            <option selected disabled hidden>Bereich wählen</option>
-            <option (click)="setSubject('A')">A</option>
-            <option (click)="setSubject('B')">B</option>
-            <option (click)="setSubject('C')">C</option>
-            <option (click)="setSubject('D')">D</option>
+<div class="m-auto w-fit mt-4">
+    <div [ngClass] = "simulation ? 'opacity-50' : ''">
+        <span>Bereich</span>
+        <select class="float-right h-8 px-2 outline-none bg-bg border border-2 border-primary rounded-md" [ngModel]="subject" (ngModelChange)="onSubjectSelect($event)"
+        [disabled]="simulation">
+            <option [value]="'A'">Bereich A</option>
+            <option [value]="'B'">Bereich B</option>
+            <option [value]="'C'">Bereich C</option>
+            <option [value]="'D'">Bereich D</option>
         </select>
     </div>
-    <div>
-        <span class="text-lg font-bold mr-2">Fragen Anzahl</span>
-        <input class="appearance-none p-1 outline-none bg-bg border border-2 border-primary rounded-md" 
-        [disabled]="subject"
+    <div class="mt-4" [ngClass] = "countInputDisabled || simulation ? 'opacity-50' : ''">
+        <span>Anzahl der Fragen</span>
+        <input class="float-right appearance-none h-8 px-2 outline-none bg-bg border border-2 border-primary rounded-md" [ngModel]="questionCount" (ngModelChange)="onQuestionCountInput($event)" 
+        [disabled]="simulation || countInputDisabled"
         type="number"
-        value=1
+        [value]=10
         min=1
         max={{maxQuestionCount()}}>
     </div>
+    <div class="mt-4">
+        <span>Prüfung simulieren</span>
+        <input class="border border-primary w-4 h-4 checked:bg-primary" [ngModel]="simulation" (ngModelChange)="onSimulationCheck($event)"
+        type="checkbox">
+        <p class="italic text-sm opacity-70">jeweils 10 zufällige Fragen aus allen Bereichen</p>
+    </div>
+    <div class="button m-4" *ngIf="subject && questionCount || simulation" (click)="startTest()">Test starten</div>
 </div>

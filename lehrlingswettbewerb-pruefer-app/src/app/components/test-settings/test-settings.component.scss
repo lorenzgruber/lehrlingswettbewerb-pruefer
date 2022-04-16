@@ -1,3 +1,7 @@
 :host {
-    @apply block tablet:w-4/5 laptop:w-4/6 desktop:w-1/2 outline;
+    @apply host;
+}
+
+span {
+    @apply mr-2 text-lg;
 }

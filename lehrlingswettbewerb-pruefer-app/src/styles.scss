@@ -12,3 +12,17 @@
 body {
     background-color: theme('colors.bg');
 }
+
+.button {
+  @apply text-primary border-primary border border-2  py-2 px-4 mt-4 rounded-md w-fit m-auto text-center cursor-pointer font-bold animate-pop_up;
+}
+
+.host {
+  @apply block tablet:w-4/5 laptop:w-4/6 desktop:w-1/2 m-auto mt-10;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

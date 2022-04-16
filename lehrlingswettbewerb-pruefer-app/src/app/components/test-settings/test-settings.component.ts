@@ -9,9 +9,10 @@ import { QuestionsService } from 'src/app/services/questions.service';
   styleUrls: ['./test-settings.component.scss'],
 })
 export class TestSettingsComponent implements OnInit {
-  subject: string = 'A';
-  questionCount: number = 30;
+  subject: string = 'Bereich wählen';
+  questionCount: number;
   simulation: boolean;
+  countInputDisabled = true;
 
   constructor(
     private router: Router,
@@ -20,12 +21,24 @@ export class TestSettingsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  setSubject(subject: string): void {
+  onSubjectSelect(subject: string): void {
     this.subject = subject;
+    this.countInputDisabled = false;
+    
+    if (this.questionCount > this.maxQuestionCount()) {
+      this.questionCount = this.maxQuestionCount();
+    }
+    if (!this.questionCount) {
+      this.questionCount = 1;
+    }
   }
 
-  setQuestionCount(count: number): void {
+  onQuestionCountInput(count: number): void {
     this.questionCount = count;
+  }
+
+  onSimulationCheck(simulation: boolean): void {
+    this.simulation = simulation;
   }
 
   maxQuestionCount(): number {
@@ -36,7 +49,10 @@ export class TestSettingsComponent implements OnInit {
   }
 
   startTest(): void {
-    this.router.navigate(['test', this.subject, this.questionCount]);
-    // this.router.navigate(['test/simulation']);
+    if (this.simulation) {
+      this.router.navigate(['test/simulation']);
+    }else {
+      this.router.navigate(['test', this.subject, this.questionCount]);
+    }
   }
 }
