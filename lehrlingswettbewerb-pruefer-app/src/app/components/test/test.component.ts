@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/models/question';
 import { QuestionAnswer } from 'src/app/models/questionAnswer';
 import { QuestionsService } from 'src/app/services/questions.service';
@@ -18,10 +18,17 @@ export class TestComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private questionService: QuestionsService
   ) {}
 
   ngOnInit(): void {
+
+    // very bad fix
+    if (this.questionService.questions === undefined) {
+      this.router.navigate(['/']);
+    }
+
     if (Object.keys(this.route.snapshot.params).length === 0) {
       this.questions = this.questionService
         .getTestQuestions('A', 10)
