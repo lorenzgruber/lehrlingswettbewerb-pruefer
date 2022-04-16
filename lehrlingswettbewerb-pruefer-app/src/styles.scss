@@ -17,12 +17,37 @@ body {
   @apply text-primary border-primary border border-2  py-2 px-4 mt-4 rounded-md w-fit m-auto text-center cursor-pointer font-bold animate-pop_up;
 }
 
-.host {
-  @apply block tablet:w-4/5 laptop:w-4/6 desktop:w-1/2 m-auto mt-10;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+
+// Material Icons
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
