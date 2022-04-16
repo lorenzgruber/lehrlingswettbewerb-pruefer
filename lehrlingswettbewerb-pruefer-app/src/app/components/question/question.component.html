@@ -17,11 +17,13 @@
         ? 'correct'
         : 'wrong'
       : selectedAnswer !== undefined && i == question.correct
-      ? 'correct opacity-50'
+      ? 'correct'
       : selectedAnswer === undefined ? '' : 'opacity-50'
   "
 >
   {{ answer }}
+  <span class="material-icons float-right text-correct" *ngIf="selectedAnswer == i && selectedAnswer == question.correct">check</span>
+  <span class="material-icons float-right text-wrong" *ngIf="selectedAnswer == i && selectedAnswer != question.correct">clear</span>
 </div>
 
 <div
