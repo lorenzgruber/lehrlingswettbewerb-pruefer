@@ -1,0 +1,16 @@
+:host {
+    @apply block tablet:w-4/5 laptop:w-4/6 desktop:w-1/2;
+}
+
+.correct {
+    @apply border-correct text-correct;
+}
+
+.correct-instead {
+    @apply border-correct-transparent text-correct-transparent;
+}
+
+
+.wrong {
+    @apply border-wrong text-wrong;
+}
