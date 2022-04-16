@@ -4,7 +4,7 @@
 </h2>
 
 <div
-  class="text-base w-4/5 m-auto p-2 border-primary-transparent hover:border-primary border mt-2 rounded-md"
+  class="text-base w-4/5 m-auto p-2 border-primary-transparent hover:border-primary border mt-2 rounded-md transition-colors"
   *ngFor="let answer of question.answers; let i = index"
   [attr.data-index]="i"
   (click)="selectAnswer(i)"
@@ -17,8 +17,8 @@
         ? 'correct'
         : 'wrong'
       : selectedAnswer !== undefined && i == question.correct
-      ? 'correct-instead'
-      : ''
+      ? 'correct opacity-50'
+      : selectedAnswer === undefined ? '' : 'opacity-50'
   "
 >
   {{ answer }}

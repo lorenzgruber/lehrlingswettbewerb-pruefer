@@ -11,7 +11,6 @@ module.exports = {
       'primary': '#bd93f9',
       'primary-transparent': '#bd93f99c',
       'correct': '#18ddaf',
-      'correct-transparent': '#18ddaf80',
       'wrong': '#f758a0'
     },
     screens: {

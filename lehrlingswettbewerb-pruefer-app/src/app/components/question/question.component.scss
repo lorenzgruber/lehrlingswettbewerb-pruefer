@@ -6,11 +6,6 @@
     @apply border-correct text-correct;
 }
 
-.correct-instead {
-    @apply border-correct-transparent text-correct-transparent;
-}
-
-
 .wrong {
     @apply border-wrong text-wrong;
 }
