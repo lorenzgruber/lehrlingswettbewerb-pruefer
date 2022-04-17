@@ -9,6 +9,7 @@ import { QuestionComponent } from './components/question/question.component';
 import { QuestionAnswerComponent } from './components/question-answer/question-answer.component';
 import { TestSettingsComponent } from './components/test-settings/test-settings.component';
 import { TestComponent } from './components/test/test.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TestComponent } from './components/test/test.component';
     QuestionComponent,
     QuestionAnswerComponent,
     TestSettingsComponent,
-    TestComponent
+    TestComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
