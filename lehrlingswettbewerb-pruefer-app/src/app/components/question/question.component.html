@@ -4,7 +4,7 @@
 </h2>
 
 <div
-  class="text-base w-9/12 m-auto p-3 border-primary-transparent hover:border-primary border mt-2 rounded-md transition-colors relative"
+  class="text-base w-9/12 m-auto p-3 border-primary-transparent border mt-2 rounded-md transition-colors relative"
   *ngFor="let answer of question.answers; let i = index"
   [attr.data-index]="i"
   (click)="selectAnswer(i)"
