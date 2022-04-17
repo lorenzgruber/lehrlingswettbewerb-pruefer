@@ -35,6 +35,9 @@ export class TestSettingsComponent implements OnInit {
 
   onQuestionCountInput(count: number): void {
     this.questionCount = count;
+    if (this.questionCount > this.maxQuestionCount()) {
+      this.questionCount = this.maxQuestionCount();
+    }
   }
 
   onSimulationCheck(simulation: boolean): void {
